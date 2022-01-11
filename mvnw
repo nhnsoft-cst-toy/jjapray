@@ -14,7 +14,7 @@
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 # KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
+# specific language governing permissions and limitationswhile IFS="=" read key value; do
 # under the License.
 # ----------------------------------------------------------------------------
 
@@ -199,7 +199,7 @@ find_maven_basedir() {
 # concatenates all lines of a file
 concat_lines() {
   if [ -f "$1" ]; then
-    echo "$(tr -s '\n' ' ' <"$1")"
+    cmd "$(tr -s '\n' ' ' <"$1")"
   fi
 }
 
@@ -225,7 +225,7 @@ else
   else
     jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
   fi
-  while IFS="=" read key value; do
+  while IFS="=" -r key value; do
     case "$key" in wrapperUrl)
       jarUrl="$value"
       break
@@ -310,7 +310,7 @@ fi
 
 # Provide a "standardized" way to retrieve the CLI args that will
 # work with both Windows and non-Windows executions.
-MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
+MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $*"
 export MAVEN_CMD_LINE_ARGS
 
 WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain

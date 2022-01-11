@@ -5,18 +5,18 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class CareResponse<T> {
+public class CommonResponse<T> {
     private int code = 0;
     private String message = "SUCCESS";
     private T result;
 
-    public static <E> CareResponse<E> of(E result) {
-        CareResponse<E> ret = new CareResponse<>();
+    public static <E> CommonResponse<E> of(E result) {
+        CommonResponse<E> ret = new CommonResponse<>();
         ret.setResult(result);
         return ret;
     }
 
-    public static CareResponse empty() {
-        return new CareResponse<>();
+    public static CommonResponse empty() {
+        return new CommonResponse<>();
     }
 }

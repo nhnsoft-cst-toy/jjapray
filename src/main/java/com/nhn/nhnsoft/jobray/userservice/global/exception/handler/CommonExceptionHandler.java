@@ -1,6 +1,6 @@
 package com.nhn.nhnsoft.jobray.userservice.global.exception.handler;
 
-import com.nhn.nhnsoft.jobray.userservice.global.common.CareResponse;
+import com.nhn.nhnsoft.jobray.userservice.global.common.CommonResponse;
 import com.nhn.nhnsoft.jobray.userservice.global.exception.ErrorCode;
 import com.nhn.nhnsoft.jobray.userservice.global.exception.common.*;
 import com.nhn.nhnsoft.jobray.userservice.global.exception.custom.BusinessException;
@@ -40,7 +40,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
                         }
                 )
                 .collect(Collectors.toList());
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(errMessage);
         response.setResult(vl);
         response.setCode(HttpStatus.BAD_REQUEST.value());
@@ -50,7 +50,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {ConstraintViolationException.class})
     protected ResponseEntity<?> handleErrorStatus(ConstraintViolationException exception) {
         logger.warn("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
@@ -59,7 +59,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {AlreadyExistException.class})
     protected ResponseEntity<?> handleErrorStatus(AlreadyExistException exception) {
         logger.warn("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.ALREADY_REPORTED.value());
         return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(response);
@@ -68,7 +68,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {MethodNotAllowedException.class})
     protected ResponseEntity<?> handleErrorStatus(MethodNotAllowedException exception) {
         logger.warn("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
@@ -77,7 +77,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {NotExistException.class})
     protected ResponseEntity<?> handleErrorStatus(NotExistException exception) {
         logger.warn("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
@@ -86,7 +86,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {BadRequestException.class})
     protected ResponseEntity<?> handleErrorStatus(BadRequestException exception) {
         logger.warn("", exception);
-        CareResponse<Map<String, Object>> response = new CareResponse();
+        CommonResponse<Map<String, Object>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         if (exception.getCode() != null && exception.getCode() > 0) {
@@ -100,7 +100,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {IllegalArgumentException.class})
     protected ResponseEntity<?> handleErrorStatus(IllegalArgumentException exception) {
         logger.warn("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
@@ -109,7 +109,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {InternalServerErrorException.class})
     protected ResponseEntity<?> handleInternalServerErrorExceptionException(Exception exception) {
         logger.error(exception.getMessage(), exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
@@ -118,7 +118,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     protected ResponseEntity<?> handleException(Exception exception) {
         logger.error("", exception);
-        CareResponse<List<String>> response = new CareResponse();
+        CommonResponse<List<String>> response = new CommonResponse();
         response.setMessage(exception.getMessage());
         response.setCode(HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
@@ -142,7 +142,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
         Object result = exception.getResult() != null ? exception.getResult() : false;
 
         // Set exception response
-        CareResponse<Object> response = new CareResponse();
+        CommonResponse<Object> response = new CommonResponse();
         response.setMessage(errorMessage);
         response.setCode(errorCode.getCode());
         response.setResult(result);

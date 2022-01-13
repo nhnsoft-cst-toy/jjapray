@@ -8,6 +8,9 @@ public enum ErrorCode {
     // SAMPLE
     SAMPLE_NORMAL_EXCEPTION(HttpStatus.BAD_REQUEST, 9990, "error.msg.sample.normal"),
     SAMPLE_WITH_ARG_EXCEPTION(HttpStatus.CONFLICT, 9991, "error.msg.sample.with-arg"),
+
+    // USER
+    USER_ALREADY_EXIST(HttpStatus.CONFLICT, 1000, "error.msg.user.already.exist"),
     ;
 
     private HttpStatus httpStatus;

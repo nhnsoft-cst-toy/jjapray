@@ -1,4 +1,7 @@
 package com.nhn.nhnsoft.jobray.userservice.domain.user.application;
 
-public class UserJoinService {
+import com.nhn.nhnsoft.jobray.userservice.domain.user.domain.User;
+
+public interface UserJoinService {
+    User join(User user);
 }

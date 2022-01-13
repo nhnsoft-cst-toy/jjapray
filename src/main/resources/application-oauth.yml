@@ -1,0 +1,11 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            # 보안을 위해 oauth 정보는 git 에 추가하지 않고 별도 페이지로 빼서 사용하는것을 권장.
+            # 이건 toy 프로젝트니깐 git 에 추가 ..!
+            clientId: 0d3db90960dc0202fe2c
+            clientSecret: 5d677416b2e7a603c8600e036ab1b8e7730855d9
+            scope: profile,email

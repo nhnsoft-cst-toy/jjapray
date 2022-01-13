@@ -1,9 +1,9 @@
 spring:
   profiles:
     active: local
+    include: oauth
   application:
     name: jobray-user-service
-
 
 ---
 spring:
@@ -16,6 +16,9 @@ spring:
       username: sa
       password:
       driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
 ---
 spring:
   config:
